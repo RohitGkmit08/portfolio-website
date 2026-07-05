@@ -1,0 +1,79 @@
+1. Understanding express ? 
+
+const express = require("express"); express -> function
+const app = express(); -> here we are calling the function, and it returns an application object.
+app.listen(5000);
+
+npm install express
+        │
+        ▼
+Downloads the Express package
+        │
+        ▼
+require("express")
+        │
+        ▼
+Gets the express() function
+        │
+        ▼
+express()
+        │
+        ▼
+Creates the Express Application (app)
+        │
+        ▼
+Configure the application
+(Routes • Middleware • Settings)
+        │
+        ▼
+app.listen(PORT)
+        │
+        ▼
+Registers the application with the Operating System on that port
+        │
+        ▼
+Browser sends a request to localhost:PORT
+        │
+        ▼
+Operating System forwards the request to Express
+        │
+        ▼
+Express matches the route and executes the appropriate handler
+        │
+        ▼
+Response is sent back to the browser
+
+2. Understanding server.js and app.js ? 
+app.js    -> Build the application.
+server.js -> Start the application.
+
+                server.js
+                     │
+                     ▼
+             Import Express App
+                     │
+                     ▼
+             Connect MongoDB 
+                     │
+                     ▼
+             app.listen(PORT)
+                     │
+                     ▼
+      Operating System forwards requests
+                     │
+                     ▼
+                 app.js
+                     │
+                     ▼
+           Express Application
+                     │
+         ┌───────────┼───────────┐
+         ▼           ▼           ▼
+    Middleware     Routes     Settings
+
+3. package.json and package-lock.json ? 
+-> package.json = Think of it as your project's library.
+Inside it live all your installed packages (express, dotenv, body-parser etc.)
+
+-> package-lock.json = It records the exact versions of every package that was installed.
+
