@@ -72,8 +72,38 @@ server.js -> Start the application.
     Middleware     Routes     Settings
 
 3. package.json and package-lock.json ? 
--> package.json = Think of it as your project's library.
+-> package.json = It tells npm WHAT this project needs.
 Inside it live all your installed packages (express, dotenv, body-parser etc.)
 
 -> package-lock.json = It records the exact versions of every package that was installed.
 
+package.json
+        │
+        ▼
+Tells npm what to install
+        │
+        ▼
+npm downloads packages
+        │
+        ▼
+node_modules
+        │
+        ▼
+Actual installed libraries
+
+4. Request pipeline 
+
+Request
+   │
+   ▼
+Validation Rules
+   │
+   ▼
+validate Middleware
+   │
+   ├── Invalid → Return 400 Error
+   │
+   └── Valid → next()
+                │
+                ▼
+           Controller
