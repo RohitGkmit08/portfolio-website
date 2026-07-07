@@ -1,11 +1,13 @@
+import Nav from "./components/Navbar/Nav";
+
 function App() {
   return (
     <>
-      <section className="light">
-        <div className="container">
-          <h1>Portfolio</h1>
-        </div>
-      </section>
+      <Nav />
+
+      <main>
+
+      </main>
     </>
   );
 }

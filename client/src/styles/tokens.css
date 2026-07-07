@@ -1,8 +1,6 @@
 :root {
 
-  /* ===========================
-     COLORS
-  =========================== */
+/* Colours */
 
   --paper: #F0EFE9;
   --paper-2: #E7E5DC;
@@ -26,9 +24,7 @@
   --line-dark: #3A423C;
 
 
-  /* ===========================
-     TYPOGRAPHY
-  =========================== */
+  /* Typography */
 
   --font-poster: "Archivo Black", sans-serif;
   --font-display: "Space Grotesk", sans-serif;
@@ -36,18 +32,13 @@
   --font-mono: "IBM Plex Mono", monospace;
 
 
-  /* ===========================
-     LAYOUT
-  =========================== */
+  /* Layout */
 
   --container-width: 1000px;
-
   --side-rail-width: 96px;
 
 
-  /* ===========================
-     SPACING
-  =========================== */
+  /* Spacing */
 
   --space-xs: 8px;
   --space-sm: 16px;
@@ -56,17 +47,11 @@
   --space-xl: 80px;
 
 
-  /* ===========================
-     BORDER
-  =========================== */
+  /* Border */
 
   --radius-sm: 2px;
   --radius-pill: 999px;
 
-
-  /* ===========================
-     TRANSITION
-  =========================== */
-
+  /* Transition */
   --transition-fast: 150ms ease;
 }

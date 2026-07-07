@@ -257,3 +257,159 @@ Purpose:
 - Horizontally centers an element.
 - Modern replacement for margin-left/right.
 - Uses logical properties (works with both LTR and RTL languages).
+
+
+CSS TRANSITION
+Problem:
+CSS properties change instantly.
+
+Gray
+↓
+
+Green
+
+(No animation)
+
+-----------------------------------------------------------
+
+Solution:
+Use transition.
+
+transition DOES NOT change any property.
+
+It only tells the browser:
+
+"If this property changes in the future,
+animate the change."
+
+Example
+
+a {
+
+    transition: color 150ms ease;
+
+}
+
+a:hover {
+
+    color: green;
+
+}
+
+Flow
+
+Mouse Hover
+↓
+
+:hover becomes active
+↓
+
+color changes
+↓
+
+transition detects the change
+↓
+
+browser animates color over 150ms
+
+Important
+
+:hover changes the property.
+
+transition animates HOW the property changes.
+
+CENTERING A FIXED/ABSOLUTE ELEMENT
+left: 50%
+
+Moves the LEFT EDGE of the element to 50% of the parent's width.
+
+It DOES NOT center the element.
+
+-----------------------------------------------------------
+
+transform: translateX(-50%)
+
+Moves the element left by 50% of ITS OWN width.
+
+Unlike left:50%, this percentage is calculated using the
+element's width, NOT the parent's width.
+
+Combining both:
+
+left: 50%;
+transform: translateX(-50%);
+
+Result:
+
+1. Left edge reaches the center.
+2. Element moves back by half of its own width.
+3. The CENTER of the element is now perfectly aligned with
+   the center of the screen.
+
+Remember:
+
+left:50%      → Parent's width
+translateX()  → Element's own width
+
+:last-child-
+Purpose:
+Selects the last child element inside a parent.
+
+Example
+
+<div>
+
+    <span></span>
+
+    <span>Available for work</span>
+
+</div>
+
+span:last-child
+
+↓
+
+Selects only the second span.
+
+Useful when an element can be uniquely identified by its position
+instead of adding another class.
+
+
+white-space-
+Purpose:
+Controls whether text is allowed to wrap.
+
+white-space: normal;
+
+↓
+
+Browser wraps text when needed.
+
+Example
+
+Available for
+work
+
+-----------------------------------------
+
+white-space: nowrap;
+
+↓
+
+Browser keeps text on a single line.
+
+Available for work
+
+
+Difference
+white-space
+
+↓
+
+Controls IF text wraps.
+
+text-wrap
+
+↓
+
+Controls HOW text wraps (balance, pretty, etc.).
