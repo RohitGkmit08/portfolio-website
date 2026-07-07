@@ -1,0 +1,259 @@
+
+CSS RESET
+Problem:
+Every browser (Chrome, Firefox, Safari, Edge) has its own default CSS
+(e.g. body margin, button styles, font styles).
+
+Solution:
+Create reset.css to remove browser defaults so every browser starts from
+the same baseline.
+
+Common Reset Rules
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+Reason:
+- Removes default spacing.
+- Makes width calculations predictable.
+- Applies to both real elements and pseudo-elements.
+
+-----------------------------------------------------------
+
+::before and ::after
+
+Problem:
+Sometimes we need an extra element only for decoration
+(line, circle, underline, badge, background shape, etc.).
+
+Without pseudo-elements:
+Need extra HTML.
+
+<div class="card">
+    <span></span>
+    Content
+</div>
+
+With pseudo-elements:
+CSS creates an imaginary element.
+
+.card::before {
+    content: "";
+}
+
+Advantages
+- Cleaner HTML
+- Decorative elements stay inside CSS
+- Widely used for UI effects
+
+Difference
+
+Pseudo Class
+Changes the STATE of an existing element.
+
+:hover
+:focus
+:first-child
+
+Pseudo Element
+Creates an imaginary element.
+
+::before
+::after
+::placeholder
+::selection
+
+
+DESIGN TOKENS
+
+Problem:
+Hardcoding colors, spacing and fonts everywhere makes future changes
+difficult.
+
+Instead of
+
+color: #2F6B4F;
+
+30 different places...
+
+Store values once.
+
+:root {
+    --credit: #2F6B4F;
+}
+
+Use
+
+color: var(--credit);
+
+Now changing one variable updates the whole website.
+
+
+WHY :root ?
+Question:
+Where should variables live?
+
+Not Hero.
+Not Navbar.
+Not Projects.
+
+They should be available to every component.
+
+Therefore use
+
+:root
+
+Think of it as the highest/global scope in CSS.
+
+
+LAYOUT TOKENS
+--container-width
+
+Purpose:
+Maximum width of the website content.
+
+Without it:
+Content stretches across very wide monitors,
+making text difficult to read.
+
+Container Example
+
+Browser (1920px)
+
+----------------------------------------------
+
+        +----------------------+
+        |      Content         |
+        +----------------------+
+
+----------------------------------------------
+
+Changing only
+
+--container-width
+
+changes the width of the entire site.
+
+-----------------------------------------------------------
+
+--side-rail-width
+
+Stores the width of the left navigation rail.
+
+Instead of
+
+margin-left: 96px;
+
+use
+
+margin-left: var(--side-rail-width);
+
+Changing the variable updates every section automatically.
+
+
+BORDER TOKENS
+--radius-sm
+
+Stores the standard corner radius used throughout the project.
+
+Instead of
+
+border-radius: 2px;
+
+write
+
+border-radius: var(--radius-sm);
+
+Changing the variable updates every component.
+
+-----------------------------------------------------------
+
+--radius-pill
+
+border-radius: 999px;
+
+Purpose:
+Create fully rounded pill-shaped buttons.
+
+Example
+
++--------------------+
+
+↓
+
+(--------------------)
+
+999px doesn't literally mean 999 pixels.
+
+It simply tells the browser:
+"Round the corners as much as possible."
+
+
+
+GLOBAL CONTAINER
+.container {
+
+    width: min(100% - 2rem, var(--container-width));
+
+    margin-inline: auto;
+
+}
+
+Purpose
+
+Desktop
+↓
+
+Never exceed container width.
+
+Mobile
+↓
+
+Automatically shrink to fit.
+
+2rem
+↓
+
+Provides left and right breathing space.
+
+margin-inline:auto
+↓
+
+Centers the container horizontally.
+
+This single class is used throughout the website.
+
+
+margin-inline: auto-
+Problem:
+A fixed-width container stays aligned to the left by default.
+
+.container {
+    width: 1000px;
+}
+
+Solution:
+Tell the browser to automatically divide the remaining horizontal space.
+
+.container {
+    width: 1000px;
+    margin-inline: auto;
+}
+
+Equivalent to:
+
+margin-left: auto;
+margin-right: auto;
+
+Purpose:
+- Horizontally centers an element.
+- Modern replacement for margin-left/right.
+- Uses logical properties (works with both LTR and RTL languages).

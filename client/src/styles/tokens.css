@@ -1,0 +1,72 @@
+:root {
+
+  /* ===========================
+     COLORS
+  =========================== */
+
+  --paper: #F0EFE9;
+  --paper-2: #E7E5DC;
+
+  --ink: #15181A;
+  --ink-2: #1D2120;
+
+  --text-ink: #181B19;
+  --text-paper: #EDEFE8;
+
+  --text-muted-ink: #5C6259;
+  --text-muted-paper: #9BA398;
+
+  --credit: #2F6B4F;
+  --credit-bright: #5FAE84;
+
+  --debit: #A8462D;
+  --debit-bright: #D97350;
+
+  --line: #D2CFC2;
+  --line-dark: #3A423C;
+
+
+  /* ===========================
+     TYPOGRAPHY
+  =========================== */
+
+  --font-poster: "Archivo Black", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+
+  /* ===========================
+     LAYOUT
+  =========================== */
+
+  --container-width: 1000px;
+
+  --side-rail-width: 96px;
+
+
+  /* ===========================
+     SPACING
+  =========================== */
+
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 80px;
+
+
+  /* ===========================
+     BORDER
+  =========================== */
+
+  --radius-sm: 2px;
+  --radius-pill: 999px;
+
+
+  /* ===========================
+     TRANSITION
+  =========================== */
+
+  --transition-fast: 150ms ease;
+}
