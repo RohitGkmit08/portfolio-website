@@ -413,3 +413,573 @@ text-wrap
 ↓
 
 Controls HOW text wraps (balance, pretty, etc.).
+
+WHY margin-left ON .site-content ?
+The left rail uses
+
+position: fixed;
+
+Fixed elements are removed from the normal document flow.
+
+Therefore the browser starts the page from x = 0,
+causing the Hero to appear underneath the rail.
+
+Solution:
+
+.site-content {
+    margin-left: var(--side-rail-width);
+}
+
+This shifts the ENTIRE website to the right by the width
+of the navigation rail.
+
+Instead of moving every section individually, we move the
+parent (<main>), and all child sections automatically
+follow.
+
+-----------------------------------------------------------
+
+On Mobile
+
+The rail disappears.
+
+Therefore the extra left margin is no longer needed.
+
+@media (max-width:900px){
+    .site-content{
+        margin-left:0;
+    }
+}
+
+===========================================================
+CSS UNITS
+===========================================================
+
+1. px (Pixels)
+
+Purpose:
+Fixed size.
+
+Example
+
+width: 300px;
+
+Meaning:
+Always 300 pixels. Does not scale.
+
+Common Uses:
+- Borders
+- Icons
+- Small spacing
+- Exact dimensions
+
+
+-----------------------------------------------------------
+
+2. % (Percentage)
+
+Purpose:
+Relative to the parent element.
+
+Example
+
+.parent {
+    width: 1000px;
+}
+
+.child {
+    width: 50%;
+}
+
+Result
+
+Child width = 500px
+
+If parent changes to 600px,
+
+Child automatically becomes 300px.
+
+Remember:
+
+% → Parent's size
+
+
+-----------------------------------------------------------
+
+3. em
+
+Purpose:
+Relative to the current element's inherited font-size.
+
+Example
+
+.parent {
+    font-size: 20px;
+}
+
+.child {
+    font-size: 2em;
+}
+
+Result
+
+2 × 20 = 40px
+
+If parent font-size changes,
+the child changes too.
+
+Remember:
+
+em → Parent's font-size (cascades)
+
+
+-----------------------------------------------------------
+
+4. rem (Root EM)
+
+Purpose:
+Relative to the root (html) font-size.
+
+Usually
+
+html {
+    font-size: 16px;
+}
+
+Therefore
+
+1rem = 16px
+
+2rem = 32px
+
+3rem = 48px
+
+Unlike em, rem does NOT keep multiplying.
+
+Remember:
+
+rem → Root (html) font-size
+
+Preferred for:
+- Font sizes
+- Margin
+- Padding
+- Gap
+
+
+-----------------------------------------------------------
+
+5. vw (Viewport Width)
+
+Purpose:
+Relative to the browser width.
+
+Example
+
+Browser Width = 1200px
+
+width: 50vw;
+
+Result
+
+600px
+
+Remember:
+
+vw → Browser Width
+
+
+-----------------------------------------------------------
+
+6. vh (Viewport Height)
+
+Purpose:
+Relative to browser height.
+
+Example
+
+Browser Height = 900px
+
+height: 100vh;
+
+Result
+
+900px
+
+Common Uses:
+- Full-screen sections
+
+
+-----------------------------------------------------------
+
+7. dvh (Dynamic Viewport Height)
+
+Purpose:
+Modern replacement for vh.
+
+Problem:
+
+100vh behaves inconsistently on mobile browsers because
+the address bar appears/disappears.
+
+100dvh always represents the visible viewport.
+
+Preferred for modern websites.
+
+Example
+
+min-height: 100dvh;
+
+
+-----------------------------------------------------------
+
+8. fr (Fraction)
+
+Works ONLY in CSS Grid.
+
+Example
+
+grid-template-columns: 1fr 2fr;
+
+Available width = 900px
+
+1 + 2 = 3 fractions
+
+Result
+
+300px
+
+600px
+
+Remember:
+
+fr → Fraction of remaining space
+
+
+-----------------------------------------------------------
+
+9. auto
+
+Purpose:
+Let the browser calculate the value.
+
+Example
+
+margin-inline: auto;
+
+Browser automatically calculates equal left/right margins.
+
+Common Uses:
+- Centering
+- Flexible layouts
+
+
+WIDTH PROPERTIES-
+1. width
+
+Purpose:
+Sets an exact width.
+
+Example
+
+width: 500px;
+
+Meaning
+
+Always tries to be 500px.
+
+
+-----------------------------------------------------------
+
+2. min-width
+
+Purpose:
+Sets the minimum allowed width.
+
+Example
+
+min-width: 300px;
+
+Meaning
+
+Element can become larger than 300px,
+but NEVER smaller.
+
+Useful for:
+- Cards
+- Forms
+- Sidebars
+- Buttons that shouldn't become tiny
+
+
+-----------------------------------------------------------
+
+3. max-width
+
+Purpose:
+Sets the maximum allowed width.
+
+Example
+
+max-width: 1000px;
+
+Meaning
+
+Element can become smaller than 1000px,
+but NEVER larger.
+
+Useful for:
+- Containers
+- Paragraphs
+- Images
+- Hero sections
+
+
+-----------------------------------------------------------
+
+Common Pattern
+
+.container {
+
+    width: 100%;
+
+    max-width: 1000px;
+
+}
+
+Meaning
+
+Take the full available width,
+but never exceed 1000px.
+
+Desktop-
+1920px screen
+↓
+Container = 1000px
+
+Mobile-
+375px screen
+↓
+Container = 375px
+
+
+RULE OF THUMB-
+width
+↓
+Exact size.
+
+--------------------------
+
+min-width
+↓
+Never smaller than this.
+
+--------------------------
+
+max-width
+↓
+Never larger than this.
+
+WHICH ONE SHOULD I USE?
+Fonts
+→ rem
+
+Spacing (margin, padding, gap)
+→ rem
+
+Containers
+→ width: 100%
+→ max-width
+
+Cards
+→ min-width (if they shouldn't shrink too much)
+
+Responsive Widths
+→ %
+
+Grid Layout
+→ fr
+
+Full-screen Sections
+→ min-height: 100dvh
+
+Borders
+→ px
+
+Icons
+→ px
+
+------------------------------------------------------------------------
+clamp()-
+Purpose
+
+Creates responsive values without writing media queries.
+
+Syntax
+
+clamp(minimum, preferred, maximum)
+
+Example
+
+font-size: clamp(4rem, 10vw, 8rem);
+
+Meaning
+
+Minimum Size
+
+↓
+
+4rem
+
+Preferred Size
+
+↓
+
+10vw
+
+Maximum Size
+
+↓
+
+8rem
+
+Browser automatically calculates the value.
+
+It will
+
+• Never go below 4rem.
+• Prefer 10vw.
+• Never exceed 8rem.
+
+
+Best for:
+
+ Font Size
+ Width
+ Height
+ Padding
+ Margin
+ Gap
+
+Examples-
+
+font-size: clamp(2rem, 6vw, 5rem);
+width: clamp(280px, 40vw, 500px);
+padding: clamp(1rem, 2vw, 3rem);
+
+
+POSITION: RELATIVE-
+Purpose:
+Moves an element WITHOUT removing it from the normal layout.
+
+Example
+
+.box {
+
+    position: relative;
+
+    top: 20px;
+    left: 30px;
+
+}
+
+The element is visually moved,
+but its original space is still reserved.
+
+
+POSITION: ABSOLUTE-
+Purpose:
+Removes the element from the normal document flow.
+
+Example
+
+.box {
+
+    position: absolute;
+
+    top: 20px;
+    right: 30px;
+
+}
+
+RELATIVE + ABSOLUTE-
+Most common pattern
+
+.parent {
+
+    position: relative;
+
+}
+
+.child {
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+}
+
+The absolute element is positioned relative to
+its nearest positioned ancestor.
+
+If no positioned ancestor exists,
+the browser uses the page (viewport/initial containing block).
+
+
+Decorative Elements (Relative + Absolute)-
+Pattern
+
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+}
+
+Purpose
+
+Decorative elements should not affect layout.
+
+Examples
+
+- Hero circles
+- Background shapes
+- Floating icons
+- Badges
+- Corner ribbons
+
+-----------------------------------------------------------
+
+pointer-events: none;
+
+Makes an element ignore mouse interactions.
+
+Useful for:
+
+- Decorative backgrounds
+- Absolute overlays
+- Floating graphics
+
+-----------------------------------------------------------
+
+z-index
+
+Controls stacking order.
+
+Higher z-index appears in front.
+
+Typical pattern
+
+Background Decorations
+↓
+
+z-index: 0
+
+Main Content
+↓
+
+z-index: 1
+
+This prevents decorative elements from covering text or buttons.

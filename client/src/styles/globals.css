@@ -53,3 +53,13 @@ section {
   background: var(--paper);
   color: var(--text-ink);
 }
+
+.site-content {
+  margin-left: var(--side-rail-width);
+}
+
+@media (max-width: 900px) {
+  .site-content {
+    margin-left: 0;
+  }
+}
