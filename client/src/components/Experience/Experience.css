@@ -117,3 +117,15 @@
   line-height: 1.75;
   color: var(--text-muted-ink);
 }
+
+@media (max-width: 768px) {
+  .experience-entry {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-block: 1.5rem;
+  }
+  
+  .experience-meta {
+    margin-bottom: 0.5rem;
+  }
+}
