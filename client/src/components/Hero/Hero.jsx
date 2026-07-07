@@ -35,12 +35,35 @@ function Hero() {
         <div className="hero-bottom">
 
           <p className="hero-description">
-
-          </p>
+            React, TypeScript, Node.js and MongoDB, day to day — plus
+            RBAC workflows, double-entry ledger design, Redis caching,
+            GraphQL APIs, and payment integrations when the job needs
+            precision, not just features.
+         </p>
 
           <div className="hero-actions">
 
-          </div>
+            <a href="#projects" className="btn btn-primary">
+                View Projects →
+            </a>
+
+            <a
+                href="https://github.com/YOUR_USERNAME"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+            >
+                GitHub ↗
+            </a>
+
+            <a
+                href="#"
+                className="btn btn-secondary"
+            >
+                Download Resume ↓
+            </a>
+
+         </div>
 
         </div>
 

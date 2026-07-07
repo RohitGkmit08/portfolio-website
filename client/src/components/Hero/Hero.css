@@ -111,3 +111,8 @@
   right: 280px;
 }
 
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-sm);
+}

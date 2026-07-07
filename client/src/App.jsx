@@ -1,5 +1,8 @@
 import Nav from "./components/Navbar/Nav";
 import Hero from "./components/Hero/Hero";
+import Stack from "./components/Stack/Stack";
+import Experience from "./components/Experience/Experience";
+
 function App() {
   return (
     <>
@@ -7,6 +10,8 @@ function App() {
 
       <main className="site-content">
           <Hero/>
+          <Stack/>
+          <Experience/>
       </main>
     </>
   );

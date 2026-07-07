@@ -1,0 +1,119 @@
+.experience {
+  background: var(--paper);
+  padding-block: 7.5rem;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 3rem;
+}
+
+.experience-header h2 {
+  font-family: var(--font-poster);
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 0.9;
+  color: var(--text-ink);
+}
+
+.experience-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.experience-divider span {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--debit);
+  white-space: nowrap;
+}
+
+.experience-line {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+}
+
+
+.experience-entry {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  column-gap: 2.5rem;
+
+  padding-block: 2rem;
+}
+
+
+.experience-meta p {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-muted-ink);
+}
+
+.experience-meta p:first-child {
+  margin-bottom: 0.25rem;
+}
+
+.experience-content h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-ink);
+  margin-bottom: 0.5rem;
+}
+
+.experience-content ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.experience-content li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted-ink);
+}
+.experience-content li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 5px;
+  height: 5px;
+  background: var(--text-muted-ink);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.experience-content h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--credit);
+
+  margin-bottom: 1.75rem;
+}
+
+.experience-content ul {
+  padding-left: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.experience-content li {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted-ink);
+}
