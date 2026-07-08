@@ -79,11 +79,7 @@
   z-index: 100;
 }
 
-@media (min-width: 1024px) {
-  .pill {
-    display: none; 
-  }
-}
+
 
 .pill-status {
   display: flex;
