@@ -2,6 +2,7 @@
   padding-top: var(--space-lg);
   min-height: 100dvh;
   position: relative;
+  overflow: hidden;
 }
 
 .hero .container {
@@ -16,103 +17,146 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: var(--space-md);
-  margin-bottom: var(--space-lg);
-  border-bottom: 1px solid var(--line);
+  padding-bottom: 26px;
+  margin-bottom: 40px;
+  border-bottom: 1px dashed var(--line);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted-ink);
 }
 
-.hero-stage {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-}
-.offset{
-    margin-left: 120px;
-}
-
-.hero-name{
-    font-family:var(--font-display);
-    font-weight:700;
-    color:var(--text-ink);
-}
-.hero-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: var(--space-lg);
-}
-
-.hero-title {
-  flex: 1;
-  max-width: 900px;
-}
-
-.hero-title h1 {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-poster);
-  font-size: clamp(4rem, 10vw, 8rem);
-  line-height: 0.88;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.01em;
   color: var(--text-ink);
 }
 
-.hero-title span {
-  display: block;
+@media (max-width: 640px) {
+  .hero-name {
+    font-size: 19px;
+  }
+  
+  .hero-top span:last-child {
+    display: none;
+  }
 }
 
-.hero-card {
-  width: 100%;
-  max-width: 320px;
-  min-width: 280px;
-  padding: var(--space-md);
-  border: 1px solid var(--line);
-  background: var(--paper-2);
-  margin-top: 40px;
+.hero-stage {
+  position: relative;
+  margin-bottom: var(--space-xl);
 }
-.accent {
+
+.poster {
+  font-family: var(--font-poster);
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  color: var(--text-ink);
+  margin: 0;
+}
+
+.poster .line {
+  display: block;
+  font-size: clamp(56px, 10vw, 128px);
+}
+
+.poster .line.offset {
+  margin-left: 8%;
   color: var(--credit);
 }
 
-.hero-card p {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--text-muted-ink);
-}
-
-.hero-circle {
+.dash-ring {
   position: absolute;
-  border: 1px dashed var(--line);
+  border: 1px dashed var(--line-dark);
+  opacity: 0.4;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
 }
 
-.hero-circle-top {
-  width: 360px;
-  height: 360px;
-  top: 140px;
-  right: 90px;
+.dash-ring.r1 {
+  width: 280px;
+  height: 280px;
+  top: -40px;
+  right: 8%;
 }
 
-.hero-circle-bottom {
-  width: 200px;
-  height: 200px;
-  bottom: -70px;
-  right: 280px;
+.dash-ring.r2 {
+  width: 160px;
+  height: 160px;
+  bottom: -30px;
+  right: 22%;
 }
 
+@media (max-width: 640px) {
+  .dash-ring {
+    display: none; 
+  }
+}
+
+.caption-card {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  max-width: 230px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 18px;
+  z-index: 2;
+}
+
+.caption-card p {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted-ink);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .caption-card {
+    position: static;
+    max-width: 100%;
+    margin-top: 28px;
+  }
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-lg);
+  margin-top: auto; 
+  padding-bottom: var(--space-xl);
+}
+
+.hero-description {
+  max-width: 520px;
+  margin: 44px 0 32px;
+  font-size: 17px;
+  color: var(--text-muted-ink);
+  line-height: 1.65;
+}
 
 .hero-actions {
   display: flex;
-  gap: var(--space-sm);
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+  
+  .hero-description {
+    margin: 24px 0 16px;
+  }
 }

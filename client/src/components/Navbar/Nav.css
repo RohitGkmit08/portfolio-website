@@ -57,8 +57,6 @@
   border-radius: 50%;
 }
 
-/* Floating Pill */
-
 .pill {
   position: fixed;
   left: 50%;
@@ -67,10 +65,11 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 10px 18px;
+  padding: 10px 10px 10px 18px;
   background: var(--ink);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
   z-index: 100;
 }
 
@@ -84,15 +83,15 @@
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
-  background: var(--credit);
+  width: 6px;
+  height: 6px;
+  background: var(--credit-bright);
   border-radius: 50%;
 }
 
 .pill-status span:last-child {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-muted-paper);
   white-space: nowrap;
 }
@@ -100,18 +99,18 @@
 .pill-links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
 }
 
 .pill-links a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
+  padding: 8px 14px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--ink-2);
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-paper);
   text-decoration: none;
 
@@ -122,4 +121,10 @@
 
 .pill-links a:hover {
   background: var(--credit);
+}
+
+@media (max-width: 520px) {
+  .pill-links a:not(:last-child) {
+    display: none;
+  }
 }

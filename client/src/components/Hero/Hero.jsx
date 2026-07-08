@@ -12,17 +12,16 @@ function Hero() {
         </div>
 
         <div className="hero-stage">
+          <div className="dash-ring r1"></div>
+          <div className="dash-ring r2"></div>
+          
+          <h1 className="poster">
+            <span className="line">FRONT TO BACK,</span>
+            <span className="line offset">BUILT TO</span>
+            <span className="line">BALANCE.</span>
+          </h1>
 
-          <div className="hero-title">
-           <h1>
-             <span>FRONT TO</span>
-             <span>BACK,</span>
-             <span className="accent offset">BUILT TO</span>
-             <span>BALANCE.</span>
-           </h1>
-          </div>
-
-          <aside className="hero-card">
+          <aside className="caption-card">
             <p>
                 Full-stack developer working across React, Node.js, and MongoDB —
                 comfortable owning a feature from the UI down to the database.
@@ -69,8 +68,6 @@ function Hero() {
         </div>
 
       </div>
-        <div className="hero-circle hero-circle-top"></div>
-        <div className="hero-circle hero-circle-bottom"></div>
     </section>
   );
 }
