@@ -9,13 +9,12 @@ const statsData = [
 
 function Stat() {
   return (
-    <section className="stats" id="stats">
+    <section className="stats" id="stats" aria-labelledby="stats-heading">
       <div className="container">
         
-        <div className="sec-head">
-          <span className="sec-num" style={{ color: "var(--debit)" }}>/ BALANCE</span>
-          <h2 className="sec-title">Running totals</h2>
-        </div>
+        <header className="section-header">
+          <h2 className="section-title" id="stats-heading">Running totals</h2>
+        </header>
 
         <div className="stat-grid">
           {statsData.map((stat) => (
