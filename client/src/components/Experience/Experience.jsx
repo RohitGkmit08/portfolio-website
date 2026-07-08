@@ -3,18 +3,13 @@ import "./Experience.css";
 
 function Experience() {
   return (
-    <section className="experience" id="work">
+    <section className="experience" id="work" aria-labelledby="experience-heading">
       <div className="container">
 
-        <div className="experience-header">
-          <h2>EXPERIENCE</h2>
-
-          <div className="experience-divider">
-            <span>02 / LEDGER OF WORK</span>
-          </div>
-        </div>
-
-        <div className="experience-line"></div>
+        <header className="section-header">
+          <span className="section-number">02 / LEDGER OF WORK</span>
+          <h2 className="section-title" id="experience-heading">Experience</h2>
+        </header>
 
         {experienceData.map((exp) => (
           <div key={exp.id}>

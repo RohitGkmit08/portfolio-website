@@ -10,7 +10,7 @@
   border: 1px solid var(--line-dark);
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1024px) {
   .projects-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -22,7 +22,7 @@
   margin-bottom: 16px;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 640px) {
   .project-details {
     grid-template-columns: 1fr 1fr;
   }
@@ -33,9 +33,16 @@
   font-size: 12px;
   letter-spacing: 0.08em;
   color: var(--debit);
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-bottom: 8px; 
+}
+
+@media (min-width: 640px) {
+  .section-number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-bottom: 0;
+  }
 }
 
 .dark .section-number {
@@ -103,7 +110,7 @@
 
 .section-header {
   position: relative;
-  margin-bottom: 32px; /* Mobile-first default spacing */
+  margin-bottom: 32px; 
   padding-bottom: 22px;
   border-bottom: 1px dashed var(--line);
 }

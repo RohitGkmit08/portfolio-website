@@ -4,13 +4,19 @@
   left: 0;
   width: var(--side-rail-width);
   height: 100dvh;
-  display: flex;
+  display: none; /* Mobile-first default: hidden */
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
   background: var(--paper);
   border-right: 1px solid var(--line);
+}
+
+@media (min-width: 1024px) {
+  .rail {
+    display: flex; 
+  }
 }
 
 .rail-logo {
@@ -73,6 +79,12 @@
   z-index: 100;
 }
 
+@media (min-width: 1024px) {
+  .pill {
+    display: none; 
+  }
+}
+
 .pill-status {
   display: flex;
   align-items: center;
@@ -123,8 +135,13 @@
   background: var(--credit);
 }
 
-@media (max-width: 520px) {
-  .pill-links a:not(:last-child) {
+@media (max-width: 639px) {
+  .pill-status span:last-child {
     display: none;
+  }
+  
+  .pill-status {
+    padding-right: 0;
+    border-right: none;
   }
 }

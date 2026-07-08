@@ -32,9 +32,16 @@
   font-size: 12px;
   letter-spacing: 0.08em;
   color: var(--debit-bright);
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-bottom: 8px; /* Mobile-first default: stack above title */
+}
+
+@media (min-width: 640px) {
+  .section-number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-bottom: 0;
+  }
 }
 
 .section-title {

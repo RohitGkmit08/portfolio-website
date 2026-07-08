@@ -1,10 +1,8 @@
 
-/* 1. Global Navigation Rail (Desktop-Only, Hidden by Default) */
 .navigation-rail {
   display: none;
 }
 
-/* 2. Floating Pill Navigation */
 .floating-pill-nav {
   position: fixed;
   left: 50%;
@@ -66,7 +64,6 @@
     color var(--transition-fast);
 }
 
-/* 3. States & Focus (Floating Pill) */
 .floating-pill-link:hover {
   background: var(--credit);
   color: var(--text-paper);
