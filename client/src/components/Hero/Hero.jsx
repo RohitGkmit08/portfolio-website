@@ -57,7 +57,7 @@ function Hero() {
             </a>
 
             <a
-                href="#"
+                href="/Rohit-sinha_resume.pdf"
                 className="btn btn-secondary"
                 download
             >
