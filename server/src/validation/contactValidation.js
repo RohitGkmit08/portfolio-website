@@ -4,6 +4,7 @@ const contactValidation = [
   body("name")
     .trim()
     .notEmpty()
+    .escape()
     .withMessage("Name is required"),
 
   body("email")
@@ -14,11 +15,13 @@ const contactValidation = [
   body("subject")
     .trim()
     .notEmpty()
+    .escape()
     .withMessage("Subject is required"),
 
   body("message")
     .trim()
     .notEmpty()
+    .escape()
     .withMessage("Message is required"),
 ];
 

@@ -1091,3 +1091,37 @@ Solution:
 2. display=swap Parameter: Append `&display=swap` to the Google Fonts link query string. This tells the browser:
    "If the custom web font is not loaded yet, immediately display a system fallback font (like sans-serif) so text is instantly readable, and swap it to the custom font as soon as it downloads."
    This replaces Flash of Invisible Text (FOIT) with a safe, accessible Flash of Unstyled Text (FOUT).
+
+-----------------------------------------------------------
+
+SECURITY PRACTICES 
+
+Secure External Links
+-> rel="noopener noreferrer"
+
+XSS Prevention
+-> Avoid dangerouslySetInnerHTML
+
+Form Validation
+-> Check input format
+
+Input Sanitization
+-> Remove dangerous content
+
+Rate Limiting
+-> Limit requests per user
+
+Helmet
+-> Secure HTTP headers
+
+CSP
+-> Allow scripts only from trusted sources
+
+Environment Variables
+-> Hide secrets from GitHub
+
+Spam Protection
+-> Stop bots from submitting forms
+
+Email Abuse Prevention
+-> Prevent mass email sending

@@ -154,4 +154,10 @@ contactController.js
              Nodemailer
                   │
                   ▼
-              Gmail SMTP
+               Gmail SMTP
+
+7. Security Safeguards
+
+   - Helmet Middleware: Mounts secure HTTP response headers to block common vulnerabilities (Strict-Transport-Security, clickjacking, content-type sniffing, cross-site scripting).
+   - NoSQL Injection Filter: Uses express-mongo-sanitize to scrub request bodies/queries of keys containing mongo operators ($ or .) which prevent raw NoSQL database injection bypasses.
+   - Input HTML Escaping: Integrates .escape() validation rules to translate raw HTML string tags (<script>) into safe entity values (&lt;script&gt;) preventing stored cross-site scripting (XSS) inside databases or templates.

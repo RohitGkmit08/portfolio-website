@@ -1,20 +1,28 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
 const contactRoutes = require("./routes/contact");
 
 const app = express();
+
+// Secure HTTP response headers
+app.use(helmet());
+
+// Sanitize user inputs against NoSQL injections
+app.use(mongoSanitize());
 
 app.use(express.json());
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: process.env.CLIENT_URL || "http://localhost:5173",
     })
-)
+);
 
 app.get("/", (req, res) => {
-    res.send("server/backend is running")
-})
+    res.send("server/backend is running");
+});
 
 app.use("/api/contact", contactRoutes);
 
