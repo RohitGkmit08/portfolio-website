@@ -983,3 +983,41 @@ Main Content
 z-index: 1
 
 This prevents decorative elements from covering text or buttons.
+
+-----------------------------------------------------------
+
+INTERSECTION OBSERVER & SCROLL SPY-
+Purpose:
+Tracks which section of the page is currently in the viewport window
+to highlight the corresponding navigation link dynamically.
+
+Concept:
+It acts as a "virtual camera" that monitors DOM elements. When
+an element intersects with the specified viewing area (screen focus),
+it fires a callback function to update React state.
+
+Parameters:
+- rootMargin: Expands or shrinks the boundary box of the viewport camera.
+  e.g., rootMargin: "-25% 0px -55% 0px" defines a thin horizontal trigger
+  strip in the upper-middle section of the viewport.
+- threshold: The percentage of the target element's visibility required
+  to trigger the callback (e.g., 0.1 means 10% visible).
+
+Example Integration:
+1. Initialize observer inside useEffect.
+2. Watch list of section elements by ID: document.getElementById(id).
+3. Update state with active element ID.
+4. Clean up observer: observer.disconnect() on component unmount.
+
+-----------------------------------------------------------
+
+PREVENTING REDUNDANT JUMPS-
+Concept:
+If the user is already viewing a section, clicking its navigation link
+should not trigger any scroll jump.
+
+Implementation:
+Check if the clicked link's target ID matches the active state:
+if (activeSection === targetId) {
+    e.preventDefault(); // Stop standard browser jump
+}
