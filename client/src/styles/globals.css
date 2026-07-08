@@ -27,6 +27,41 @@ button {
   background: none;
 }
 
+.btn {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 13px 22px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--text-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--text-ink);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background: var(--credit);
+  border-color: var(--credit);
+  color: var(--paper);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-ink);
+}
+
+.btn-secondary:hover {
+  background: var(--text-ink);
+  color: var(--paper);
+}
+
 /* Sections */
 
 section {

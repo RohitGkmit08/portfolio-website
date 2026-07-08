@@ -48,7 +48,7 @@ function Hero() {
             </a>
 
             <a
-                href="https://github.com/YOUR_USERNAME"
+                href="https://github.com/RohitGkmit08"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
@@ -59,6 +59,7 @@ function Hero() {
             <a
                 href="#"
                 className="btn btn-secondary"
+                download
             >
                 Download Resume ↓
             </a>
