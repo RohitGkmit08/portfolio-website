@@ -49,6 +49,7 @@ function Nav() {
             href="#stack" 
             className={activeSection === "stack" ? "active" : ""} 
             onClick={(e) => handleNavClick(e, "stack")}
+            aria-label="Scroll to Tech Stack section"
           >
             01 STACK
           </a>
@@ -56,6 +57,7 @@ function Nav() {
             href="#work" 
             className={activeSection === "work" ? "active" : ""} 
             onClick={(e) => handleNavClick(e, "work")}
+            aria-label="Scroll to Work Experience section"
           >
             02 WORK
           </a>
@@ -63,6 +65,7 @@ function Nav() {
             href="#projects" 
             className={activeSection === "projects" ? "active" : ""} 
             onClick={(e) => handleNavClick(e, "projects")}
+            aria-label="Scroll to Projects section"
           >
             03 PROJECTS
           </a>
@@ -70,6 +73,7 @@ function Nav() {
             href="#contact" 
             className={activeSection === "contact" ? "active" : ""} 
             onClick={(e) => handleNavClick(e, "contact")}
+            aria-label="Scroll to Contact section"
           >
             04 CONTACT
           </a>
@@ -81,7 +85,7 @@ function Nav() {
 
       {/* Floating Navigation */}
 
-      <nav className="pill">
+      <div className="pill">
 
         <div className="pill-status">
             <span className="dot"></span>
@@ -91,15 +95,21 @@ function Nav() {
             </span>
         </div>
 
-        <nav className="pill-links">
+        <nav className="pill-links" aria-label="Floating quick links">
           <a 
             href="#projects" 
             className={activeSection === "projects" ? "active" : ""} 
             onClick={(e) => handleNavClick(e, "projects")}
+            aria-label="Scroll to Projects section"
           >
             Projects
           </a>
-          <a href="https://github.com/RohitGkmit08" target="_blank" rel="noopener noreferrer">
+          <a 
+            href="https://github.com/RohitGkmit08" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile (opens in new tab)"
+          >
             GitHub
           </a>
 
@@ -107,12 +117,13 @@ function Nav() {
             href="#contact" 
             className={activeSection === "contact" ? "active" : ""} 
             onClick={(e) => handleNavClick(e, "contact")}
+            aria-label="Scroll to Contact section"
           >
             Contact
           </a>
         </nav>
 
-      </nav>
+      </div>
     </>
   );
 }

@@ -1021,3 +1021,73 @@ Check if the clicked link's target ID matches the active state:
 if (activeSection === targetId) {
     e.preventDefault(); // Stop standard browser jump
 }
+
+-----------------------------------------------------------
+
+MOBILE-FIRST RESPONSIVE DESIGN (BREAKPOINTS)
+Purpose:
+Build styles starting from mobile screens (narrowest default), and progressively add complexity for wider viewports using media queries (Tablet, Desktop).
+
+Standard Breakpoints:
+- Default: Mobile layout (< 640px)
+- Tablet upgrade: @media (min-width: 640px)
+- Desktop upgrade: @media (min-width: 1024px)
+- Large Desktop upgrade: @media (min-width: 1440px)
+
+Advantages:
+- Incredibly clean and readable CSS files.
+- Much easier to maintain than device-driven media queries (like min-width: 375px).
+- Keeps site load performance high by reducing complex layout overrides.
+
+-----------------------------------------------------------
+
+PREVENTING MOBILE ELEMENT OVERLAPS
+Problem:
+Absolutely positioned sub-elements (like absolute .section-number) often collide with text on mobile screens because horizontal space is constrained.
+
+Solution:
+Stack them vertically by default (mobile-first block flow), and absolute-position them on the top-right only when screen widths expand:
+
+.section-number {
+    display: block;
+    margin-bottom: 8px; /* Stack above title */
+}
+
+@media (min-width: 640px) {
+    .section-number {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-bottom: 0; /* Float to top-right on tablet */
+    }
+}
+
+-----------------------------------------------------------
+
+KEYBOARD ACCESSIBILITY (:focus-visible)
+Problem:
+Default browser focus outlines can look messy when clicking buttons with a mouse. If we completely disable outlines (outline: none), keyboard-only users cannot navigate the site.
+
+Solution:
+Use the CSS :focus-visible pseudo-class. It only draws an outline ring when the user interacts via a keyboard (like the Tab key), keeping normal mouse clicks clean:
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--credit-bright);
+    outline-offset: 4px;
+}
+
+-----------------------------------------------------------
+
+DNS PRECONNECT & FLASH OF INVISIBLE TEXT (FOIT) OPTIMIZATION
+Problem:
+1. CSS @import Blocks: Loading fonts inside CSS files using `@import` blocks style evaluation. The browser cannot render the page until the stylesheet is loaded, parsed, and fonts are fetched, causing slow page loads.
+2. Flash of Invisible Text (FOIT): By default, browsers hide text while waiting for custom web fonts to download. If the connection is slow, the user sees a blank screen or missing blocks of text (FOIT), which ruins the user experience.
+
+Solution:
+1. DNS Preconnect links in index.html: Fetch the Google Fonts via optimized HTML `<link>` tags with `rel="preconnect"`. This performs DNS prefetching and early socket connection negotiations in parallel:
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+2. display=swap Parameter: Append `&display=swap` to the Google Fonts link query string. This tells the browser:
+   "If the custom web font is not loaded yet, immediately display a system fallback font (like sans-serif) so text is instantly readable, and swap it to the custom font as soon as it downloads."
+   This replaces Flash of Invisible Text (FOIT) with a safe, accessible Flash of Unstyled Text (FOUT).

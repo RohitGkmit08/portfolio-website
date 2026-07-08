@@ -42,15 +42,20 @@ function Hero() {
 
           <div className="hero-actions">
 
-            <a href="#projects" className="btn btn-primary">
+            <a 
+              href="#projects" 
+              className="btn btn-primary"
+              aria-label="Scroll down to Projects list"
+            >
                 View Projects →
             </a>
-
-            <a
+            
+            <a 
                 href="https://github.com/RohitGkmit08"
+                className="btn btn-secondary"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-secondary"
+                aria-label="GitHub Profile (opens in new tab)"
             >
                 GitHub ↗
             </a>
@@ -59,6 +64,7 @@ function Hero() {
                 href="/Rohit-sinha_resume.pdf"
                 className="btn btn-secondary"
                 download
+                aria-label="Download resume PDF (Rohit Sinha)"
             >
                 Download Resume ↓
             </a>
