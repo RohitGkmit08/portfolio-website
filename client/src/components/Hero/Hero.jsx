@@ -34,11 +34,8 @@ function Hero() {
         <div className="hero-bottom">
 
           <p className="hero-description">
-            React, TypeScript, Node.js and MongoDB, day to day — plus
-            RBAC workflows, double-entry ledger design, Redis caching,
-            GraphQL APIs, and payment integrations when the job needs
-            precision, not just features.
-         </p>
+            Building robust full-stack applications with React, TypeScript, Node.js, and MongoDB. Specialized in high-precision features like double-entry ledgers, RBAC, and payment integrations.
+          </p>
 
           <div className="hero-actions">
 

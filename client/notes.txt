@@ -986,41 +986,39 @@ This prevents decorative elements from covering text or buttons.
 
 -----------------------------------------------------------
 
-INTERSECTION OBSERVER & SCROLL SPY-
+INTERSECTION OBSERVER & SCROLL SPY (WITH BOTTOM SCROLL FALLBACK)-
 Purpose:
-Tracks which section of the page is currently in the viewport window
-to highlight the corresponding navigation link dynamically.
+Tracks which section of the page is currently in the viewport window to highlight the corresponding navigation link dynamically.
 
 Concept:
-It acts as a "virtual camera" that monitors DOM elements. When
-an element intersects with the specified viewing area (screen focus),
-it fires a callback function to update React state.
+It acts as a "virtual camera" that monitors DOM elements. When an element intersects with the specified viewing area (screen focus), it fires a callback function to update React state.
 
 Parameters:
-- rootMargin: Expands or shrinks the boundary box of the viewport camera.
-  e.g., rootMargin: "-25% 0px -55% 0px" defines a thin horizontal trigger
-  strip in the upper-middle section of the viewport.
-- threshold: The percentage of the target element's visibility required
-  to trigger the callback (e.g., 0.1 means 10% visible).
+- rootMargin: Expands or shrinks the boundary box of the viewport camera (e.g., rootMargin: "-25% 0px -55% 0px" defines a narrow horizontal trigger strip in the upper-middle section of the viewport).
+- threshold: The percentage of the target element's visibility required to trigger the callback (e.g., 0.1 means 10% visible).
+
+The Bottom Scroll Fallback Challenge:
+Small sections at the very bottom of the page (like a short contact footer) can never scroll high enough to intersect the virtual camera's narrow middle-screen boundary. To resolve this, a hybrid approach is used:
+- A scroll event listener fallback is added inside the useEffect hook.
+- When `window.innerHeight + window.scrollY` reaches the bottom of the page (`document.documentElement.scrollHeight`), the active section is explicitly set to `"contact"`.
 
 Example Integration:
-1. Initialize observer inside useEffect.
-2. Watch list of section elements by ID: document.getElementById(id).
-3. Update state with active element ID.
-4. Clean up observer: observer.disconnect() on component unmount.
+1. Initialize observer and scroll listener inside useEffect.
+2. Watch section elements by ID: document.getElementById(id).
+3. Fall back to bottom detection on window scroll events.
+4. Clean up both the observer and scroll listener on component unmount.
 
 -----------------------------------------------------------
 
-PREVENTING REDUNDANT JUMPS-
+SMOOTH ANCHOR SCROLLING (CLICK BEHAVIOR)-
 Concept:
-If the user is already viewing a section, clicking its navigation link
-should not trigger any scroll jump.
-
-Implementation:
-Check if the clicked link's target ID matches the active state:
-if (activeSection === targetId) {
-    e.preventDefault(); // Stop standard browser jump
+Navigation links target sections using standard HTML anchor links (e.g., href="#contact"). The site relies on native CSS smooth-scrolling:
+```css
+html {
+    scroll-behavior: smooth;
 }
+```
+No click prevention is applied (e.g., e.preventDefault() is avoided). This ensures that navigation is completely robust and clicking links always triggers a smooth scroll to the target, even if the active state tracking is slightly offset or if the user is already viewing the target section.
 
 -----------------------------------------------------------
 

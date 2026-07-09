@@ -161,3 +161,5 @@ contactController.js
    - Helmet Middleware: Mounts secure HTTP response headers to block common vulnerabilities (Strict-Transport-Security, clickjacking, content-type sniffing, cross-site scripting).
    - NoSQL Injection Filter: Uses express-mongo-sanitize to scrub request bodies/queries of keys containing mongo operators ($ or .) which prevent raw NoSQL database injection bypasses.
    - Input HTML Escaping: Integrates .escape() validation rules to translate raw HTML string tags (<script>) into safe entity values (&lt;script&gt;) preventing stored cross-site scripting (XSS) inside databases or templates.
+   - Rate Limiting Middleware: Mounts express-rate-limit to safeguard sensitive endpoints (like contact form submission API) from spam, bots, and brute force flooding by restricting incoming calls to 5 requests per 15-minute window per IP.
+   - Dynamic CORS Policy: Configures CORS (Cross-Origin Resource Sharing) headers to specifically allow requests only from the client web application's origin (via process.env.CLIENT_URL, falling back to localhost:5173), preventing unauthorized browser cross-origin requests.

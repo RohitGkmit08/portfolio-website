@@ -8,6 +8,12 @@ function Navigation() {
     const sections = ["stack", "work", "projects", "contact"];
     
     const observerCallback = (entries) => {
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+      if (isAtBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -25,15 +31,18 @@ function Navigation() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
-  }, []);
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+        setActiveSection("contact");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
 
-  // 3. Stop scrolling if the user clicks a link of the section they are already looking at
-  const handleNavClick = (e, id) => {
-    if (activeSection === id) {
-      e.preventDefault();
-    }
-  };
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -45,28 +54,24 @@ function Navigation() {
           <a 
             href="#stack" 
             className={`navigation-rail-link ${activeSection === "stack" ? "active" : ""}`} 
-            onClick={(e) => handleNavClick(e, "stack")}
           >
             01 STACK
           </a>
           <a 
             href="#work" 
             className={`navigation-rail-link ${activeSection === "work" ? "active" : ""}`} 
-            onClick={(e) => handleNavClick(e, "work")}
           >
             02 WORK
           </a>
           <a 
             href="#projects" 
             className={`navigation-rail-link ${activeSection === "projects" ? "active" : ""}`} 
-            onClick={(e) => handleNavClick(e, "projects")}
           >
             03 PROJECTS
           </a>
           <a 
             href="#contact" 
             className={`navigation-rail-link ${activeSection === "contact" ? "active" : ""}`} 
-            onClick={(e) => handleNavClick(e, "contact")}
           >
             04 CONTACT
           </a>
@@ -86,7 +91,6 @@ function Navigation() {
           <a 
             href="#projects" 
             className={`floating-pill-link ${activeSection === "projects" ? "active" : ""}`} 
-            onClick={(e) => handleNavClick(e, "projects")}
           >
             Projects
           </a>
@@ -102,7 +106,6 @@ function Navigation() {
           <a 
             href="#contact" 
             className={`floating-pill-link ${activeSection === "contact" ? "active" : ""}`} 
-            onClick={(e) => handleNavClick(e, "contact")}
           >
             Contact
           </a>

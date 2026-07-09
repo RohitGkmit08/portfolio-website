@@ -4,7 +4,7 @@ export const projectsData = [
     entryNo: "Entry 01",
     title: "SwiftCart",
     github: {
-      frontend: "https://github.com/RohitGkmit08",
+      frontend: "https://github.com/RohitGkmit08/SwiftCart",
       backend: null
     },
     builtWith: "React, Redux Toolkit, Node.js, Express, MongoDB, Razorpay, Cloudinary",
@@ -16,7 +16,7 @@ export const projectsData = [
     entryNo: "Entry 02",
     title: "Ledger System",
     github: {
-      frontend: "https://github.com/RohitGkmit08",
+      frontend: "https://github.com/RohitGkmit08/Ledger",
       backend: null
     },
     builtWith: "Node.js, Express, MongoDB, Mongoose",
@@ -28,7 +28,7 @@ export const projectsData = [
     entryNo: "Entry 03",
     title: "Jira Task Manager",
     github: {
-      frontend: "https://github.com/RohitGkmit08",
+      frontend: "https://github.com/RohitGkmit08/jira-admin-app",
       backend: null
     },
     builtWith: "React, TypeScript, Vite, pnpm",
@@ -40,7 +40,7 @@ export const projectsData = [
     entryNo: "Entry 04",
     title: "Notes API",
     github: {
-      frontend: "https://github.com/RohitGkmit08",
+      frontend: "https://github.com/RohitGkmit08/notes-api",
       backend: null
     },
     builtWith: "Node.js, Express, MongoDB Atlas, JWT, Render",
@@ -52,7 +52,7 @@ export const projectsData = [
     entryNo: "Entry 05",
     title: "Developer Portfolio",
     github: {
-      frontend: "https://github.com/RohitGkmit08",
+      frontend: "https://github.com/RohitGkmit08/portfolio-website",
       backend: null
     },
     builtWith: "React, Vite, CSS (Flexbox/Grid), Node.js, Express, MongoDB, Mongoose, Nodemailer",

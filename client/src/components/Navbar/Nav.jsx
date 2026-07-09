@@ -8,6 +8,12 @@ function Nav() {
     const sections = ["stack", "work", "projects", "contact"];
     
     const observerCallback = (entries) => {
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+      if (isAtBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -25,14 +31,18 @@ function Nav() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
-  }, []);
+    const handleScroll = () => {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+        setActiveSection("contact");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
 
-  const handleNavClick = (e, id) => {
-    if (activeSection === id) {
-      e.preventDefault();
-    }
-  };
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -48,7 +58,6 @@ function Nav() {
           <a 
             href="#stack" 
             className={activeSection === "stack" ? "active" : ""} 
-            onClick={(e) => handleNavClick(e, "stack")}
             aria-label="Scroll to Tech Stack section"
           >
             01 STACK
@@ -56,7 +65,6 @@ function Nav() {
           <a 
             href="#work" 
             className={activeSection === "work" ? "active" : ""} 
-            onClick={(e) => handleNavClick(e, "work")}
             aria-label="Scroll to Work Experience section"
           >
             02 WORK
@@ -64,7 +72,6 @@ function Nav() {
           <a 
             href="#projects" 
             className={activeSection === "projects" ? "active" : ""} 
-            onClick={(e) => handleNavClick(e, "projects")}
             aria-label="Scroll to Projects section"
           >
             03 PROJECTS
@@ -72,7 +79,6 @@ function Nav() {
           <a 
             href="#contact" 
             className={activeSection === "contact" ? "active" : ""} 
-            onClick={(e) => handleNavClick(e, "contact")}
             aria-label="Scroll to Contact section"
           >
             04 CONTACT
@@ -99,7 +105,6 @@ function Nav() {
           <a 
             href="#projects" 
             className={activeSection === "projects" ? "active" : ""} 
-            onClick={(e) => handleNavClick(e, "projects")}
             aria-label="Scroll to Projects section"
           >
             Projects
@@ -116,7 +121,6 @@ function Nav() {
           <a 
             href="#contact" 
             className={activeSection === "contact" ? "active" : ""} 
-            onClick={(e) => handleNavClick(e, "contact")}
             aria-label="Scroll to Contact section"
           >
             Contact
